@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Venta" table="Venta">
+		<id column="idVenta" name="idVenta">
+			<generator class="identity" />
+		</id>
+		<property column="fecha" name="fecha" type="LocalDate" />
+		<property column="cliente" name="cliente" type="string" />
+		<property column="descuento" name="descuento" type="float" />
+
+		<set name="setItems" table="ItemVenta" order-by="idItemVenta asc"
+			inverse="true" lazy="true" fetch="select"  cascade="save-update">
+			<key column="idVenta" not-null="true" />
+			<one-to-many class="datos.ItemVenta" />
+		</set>
+	</class>
+</hibernate-mapping>

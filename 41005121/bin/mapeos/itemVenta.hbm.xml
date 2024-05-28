@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.ItemVenta" table="ItemVenta">
+		<id column="idItemVenta" name="idItemVenta">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="venta" class="datos.Venta"
+			column="idVenta" not-null="true" lazy="false" />
+		<many-to-one name="audio" class="datos.Audio"
+			column="idAudio" not-null="true" lazy="false" />
+		<property column="cantidad" name="cantidad" type="int" />
+	</class>
+</hibernate-mapping>
